@@ -2,8 +2,8 @@
     typeof exports === "object" && typeof module !== "undefined"
         ? factory(exports, require("react"))
         : typeof define === "function" && define.amd
-            ? define(["exports", "react"], factory)
-            : factory((global.ReactRouterDOM = {}), global.React);
+          ? define(["exports", "react"], factory)
+          : factory((global.ReactRouterDOM = {}), global.React);
 })(this, function(exports, React) {
     "use strict";
 
@@ -51,7 +51,7 @@
             if (format === undefined) {
                 throw new Error(
                     "`warning(condition, format, ...args)` requires a warning " +
-                        "message argument",
+                        "message argument"
                 );
             }
             if (!condition) {
@@ -82,7 +82,7 @@
     function toObject(val) {
         if (val === null || val === undefined) {
             throw new TypeError(
-                "Object.assign cannot be called with null or undefined",
+                "Object.assign cannot be called with null or undefined"
             );
         }
 
@@ -211,7 +211,7 @@
         values,
         location,
         componentName,
-        getStack,
+        getStack
     ) {
         {
             for (var typeSpecName in typeSpecs) {
@@ -233,7 +233,7 @@
                                     "` is invalid; " +
                                     "it must be a function, usually from the `prop-types` package, but received `" +
                                     typeof typeSpecs[typeSpecName] +
-                                    "`.",
+                                    "`."
                             );
                             err.name = "Invariant Violation";
                             throw err;
@@ -244,7 +244,7 @@
                             componentName,
                             location,
                             null,
-                            ReactPropTypesSecret$1,
+                            ReactPropTypesSecret$1
                         );
                     } catch (ex) {
                         error = ex;
@@ -262,7 +262,7 @@
                                 ". " +
                                 "You may have forgotten to pass an argument to the type checker " +
                                 "creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and " +
-                                "shape all require an argument).",
+                                "shape all require an argument)."
                         );
                     }
                     if (
@@ -280,7 +280,7 @@
                                 location +
                                 " type: " +
                                 error.message +
-                                (stack != null ? stack : ""),
+                                (stack != null ? stack : "")
                         );
                     }
                 }
@@ -313,7 +313,7 @@
 
     var factoryWithTypeCheckers = function(
         isValidElement,
-        throwOnDirectAccess,
+        throwOnDirectAccess
     ) {
         /* global Symbol */
         var ITERATOR_SYMBOL = typeof Symbol === "function" && Symbol.iterator;
@@ -412,7 +412,7 @@
             oneOf: createEnumTypeChecker,
             oneOfType: createUnionTypeChecker,
             shape: createShapeTypeChecker,
-            exact: createStrictShapeTypeChecker,
+            exact: createStrictShapeTypeChecker
         };
 
         /**
@@ -459,7 +459,7 @@
                 componentName,
                 location,
                 propFullName,
-                secret,
+                secret
             ) {
                 componentName = componentName || ANONYMOUS;
                 propFullName = propFullName || propName;
@@ -470,7 +470,7 @@
                         var err = new Error(
                             "Calling PropTypes validators directly is not supported by the `prop-types` package. " +
                                 "Use `PropTypes.checkPropTypes()` to call them. " +
-                                "Read more at http://fb.me/use-check-prop-types",
+                                "Read more at http://fb.me/use-check-prop-types"
                         );
                         err.name = "Invariant Violation";
                         throw err;
@@ -492,7 +492,7 @@
                                     "and will throw in the standalone `prop-types` package. " +
                                     "You may be seeing this warning due to a third-party PropTypes " +
                                     "library. See https://fb.me/react-warning-dont-call-proptypes " +
-                                    "for details.",
+                                    "for details."
                             );
                             manualPropTypeCallCache[cacheKey] = true;
                             manualPropTypeWarningCount++;
@@ -510,7 +510,7 @@
                                     "` is marked as required " +
                                     ("in `" +
                                         componentName +
-                                        "`, but its value is `null`."),
+                                        "`, but its value is `null`.")
                             );
                         }
                         return new PropTypeError(
@@ -521,7 +521,7 @@
                                 "` is marked as required in " +
                                 ("`" +
                                     componentName +
-                                    "`, but its value is `undefined`."),
+                                    "`, but its value is `undefined`.")
                         );
                     }
                     return null;
@@ -531,7 +531,7 @@
                         propName,
                         componentName,
                         location,
-                        propFullName,
+                        propFullName
                     );
                 }
             }
@@ -549,7 +549,7 @@
                 componentName,
                 location,
                 propFullName,
-                secret,
+                secret
             ) {
                 var propValue = props[propName];
                 var propType = getPropType(propValue);
@@ -570,7 +570,7 @@
                                 "` supplied to `" +
                                 componentName +
                                 "`, expected ") +
-                            ("`" + expectedType + "`."),
+                            ("`" + expectedType + "`.")
                     );
                 }
                 return null;
@@ -588,7 +588,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 if (typeof typeChecker !== "function") {
                     return new PropTypeError(
@@ -596,7 +596,7 @@
                             propFullName +
                             "` of component `" +
                             componentName +
-                            "` has invalid PropType notation inside arrayOf.",
+                            "` has invalid PropType notation inside arrayOf."
                     );
                 }
                 var propValue = props[propName];
@@ -612,7 +612,7 @@
                                 propType +
                                 "` supplied to `" +
                                 componentName +
-                                "`, expected an array."),
+                                "`, expected an array.")
                     );
                 }
                 for (var i = 0; i < propValue.length; i++) {
@@ -622,7 +622,7 @@
                         componentName,
                         location,
                         propFullName + "[" + i + "]",
-                        ReactPropTypesSecret_1,
+                        ReactPropTypesSecret_1
                     );
                     if (error instanceof Error) {
                         return error;
@@ -639,7 +639,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 var propValue = props[propName];
                 if (!isValidElement(propValue)) {
@@ -654,7 +654,7 @@
                                 propType +
                                 "` supplied to `" +
                                 componentName +
-                                "`, expected a single ReactElement."),
+                                "`, expected a single ReactElement.")
                     );
                 }
                 return null;
@@ -668,7 +668,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 if (!(props[propName] instanceof expectedClass)) {
                     var expectedClassName = expectedClass.name || ANONYMOUS;
@@ -684,7 +684,7 @@
                                 "` supplied to `" +
                                 componentName +
                                 "`, expected ") +
-                            ("instance of `" + expectedClassName + "`."),
+                            ("instance of `" + expectedClassName + "`.")
                     );
                 }
                 return null;
@@ -695,7 +695,7 @@
         function createEnumTypeChecker(expectedValues) {
             if (!Array.isArray(expectedValues)) {
                 printWarning$2(
-                    "Invalid argument supplied to oneOf, expected an instance of array.",
+                    "Invalid argument supplied to oneOf, expected an instance of array."
                 );
                 return emptyFunctionThatReturnsNull;
             }
@@ -705,7 +705,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 var propValue = props[propName];
                 for (var i = 0; i < expectedValues.length; i++) {
@@ -727,7 +727,7 @@
                             componentName +
                             "`, expected one of " +
                             valuesString +
-                            "."),
+                            ".")
                 );
             }
             return createChainableTypeChecker(validate);
@@ -739,7 +739,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 if (typeof typeChecker !== "function") {
                     return new PropTypeError(
@@ -747,7 +747,7 @@
                             propFullName +
                             "` of component `" +
                             componentName +
-                            "` has invalid PropType notation inside objectOf.",
+                            "` has invalid PropType notation inside objectOf."
                     );
                 }
                 var propValue = props[propName];
@@ -763,7 +763,7 @@
                                 propType +
                                 "` supplied to `" +
                                 componentName +
-                                "`, expected an object."),
+                                "`, expected an object.")
                     );
                 }
                 for (var key in propValue) {
@@ -774,7 +774,7 @@
                             componentName,
                             location,
                             propFullName + "." + key,
-                            ReactPropTypesSecret_1,
+                            ReactPropTypesSecret_1
                         );
                         if (error instanceof Error) {
                             return error;
@@ -789,7 +789,7 @@
         function createUnionTypeChecker(arrayOfTypeCheckers) {
             if (!Array.isArray(arrayOfTypeCheckers)) {
                 printWarning$2(
-                    "Invalid argument supplied to oneOfType, expected an instance of array.",
+                    "Invalid argument supplied to oneOfType, expected an instance of array."
                 );
                 return emptyFunctionThatReturnsNull;
             }
@@ -803,7 +803,7 @@
                             getPostfixForTypeWarning(checker) +
                             " at index " +
                             i +
-                            ".",
+                            "."
                     );
                     return emptyFunctionThatReturnsNull;
                 }
@@ -814,7 +814,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
                     var checker = arrayOfTypeCheckers[i];
@@ -825,7 +825,7 @@
                             componentName,
                             location,
                             propFullName,
-                            ReactPropTypesSecret_1,
+                            ReactPropTypesSecret_1
                         ) == null
                     ) {
                         return null;
@@ -838,7 +838,7 @@
                         " `" +
                         propFullName +
                         "` supplied to " +
-                        ("`" + componentName + "`."),
+                        ("`" + componentName + "`.")
                 );
             }
             return createChainableTypeChecker(validate);
@@ -850,7 +850,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 if (!isNode(props[propName])) {
                     return new PropTypeError(
@@ -859,7 +859,7 @@
                             " `" +
                             propFullName +
                             "` supplied to " +
-                            ("`" + componentName + "`, expected a ReactNode."),
+                            ("`" + componentName + "`, expected a ReactNode.")
                     );
                 }
                 return null;
@@ -873,7 +873,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 var propValue = props[propName];
                 var propType = getPropType(propValue);
@@ -888,7 +888,7 @@
                             "` " +
                             ("supplied to `" +
                                 componentName +
-                                "`, expected `object`."),
+                                "`, expected `object`.")
                     );
                 }
                 for (var key in shapeTypes) {
@@ -902,7 +902,7 @@
                         componentName,
                         location,
                         propFullName + "." + key,
-                        ReactPropTypesSecret_1,
+                        ReactPropTypesSecret_1
                     );
                     if (error) {
                         return error;
@@ -919,7 +919,7 @@
                 propName,
                 componentName,
                 location,
-                propFullName,
+                propFullName
             ) {
                 var propValue = props[propName];
                 var propType = getPropType(propValue);
@@ -934,7 +934,7 @@
                             "` " +
                             ("supplied to `" +
                                 componentName +
-                                "`, expected `object`."),
+                                "`, expected `object`.")
                     );
                 }
                 // We need to check all keys in case some are required but missing from
@@ -959,8 +959,8 @@
                                 JSON.stringify(
                                     Object.keys(shapeTypes),
                                     null,
-                                    "  ",
-                                ),
+                                    "  "
+                                )
                         );
                     }
                     var error = checker(
@@ -969,7 +969,7 @@
                         componentName,
                         location,
                         propFullName + "." + key,
-                        ReactPropTypesSecret_1,
+                        ReactPropTypesSecret_1
                     );
                     if (error) {
                         return error;
@@ -1141,7 +1141,7 @@
             var throwOnDirectAccess = true;
             module.exports = factoryWithTypeCheckers(
                 isValidElement,
-                throwOnDirectAccess,
+                throwOnDirectAccess
             );
         }
     });
@@ -1165,7 +1165,7 @@
             if (format === undefined) {
                 error = new Error(
                     "Minified exception occurred; use the non-minified dev environment " +
-                        "for the full error message and additional helpful warnings.",
+                        "for the full error message and additional helpful warnings."
                 );
             } else {
                 var args = [a, b, c, d, e, f];
@@ -1173,7 +1173,7 @@
                 error = new Error(
                     format.replace(/%s/g, function() {
                         return args[argIndex++];
-                    }),
+                    })
                 );
                 error.name = "Invariant Violation";
             }
@@ -1357,7 +1357,7 @@
         return {
             pathname: pathname,
             search: search === "?" ? "" : search,
-            hash: hash === "#" ? "" : hash,
+            hash: hash === "#" ? "" : hash
         };
     };
 
@@ -1395,7 +1395,7 @@
         path,
         state,
         key,
-        currentLocation,
+        currentLocation
     ) {
         var location = void 0;
         if (typeof path === "string") {
@@ -1434,7 +1434,7 @@
                     'Pathname "' +
                         location.pathname +
                         '" could not be decoded. ' +
-                        "This is likely caused by an invalid percent-encoding.",
+                        "This is likely caused by an invalid percent-encoding."
                 );
             } else {
                 throw e;
@@ -1450,7 +1450,7 @@
             } else if (location.pathname.charAt(0) !== "/") {
                 location.pathname = resolvePathname(
                     location.pathname,
-                    currentLocation.pathname,
+                    currentLocation.pathname
                 );
             }
         } else {
@@ -1479,7 +1479,7 @@
         var setPrompt = function setPrompt(nextPrompt) {
             warning_1(
                 prompt == null,
-                "A history supports only one prompt at a time",
+                "A history supports only one prompt at a time"
             );
 
             prompt = nextPrompt;
@@ -1493,7 +1493,7 @@
             location,
             action,
             getUserConfirmation,
-            callback,
+            callback
         ) {
             // TODO: If another transition starts while we're still confirming
             // the previous one, we may end up in a weird state. Figure out the
@@ -1510,7 +1510,7 @@
                     } else {
                         warning_1(
                             false,
-                            "A history needs a getUserConfirmation function in order to use a prompt message",
+                            "A history needs a getUserConfirmation function in order to use a prompt message"
                         );
 
                         callback(true);
@@ -1561,7 +1561,7 @@
             setPrompt: setPrompt,
             confirmTransitionTo: confirmTransitionTo,
             appendListener: appendListener,
-            notifyListeners: notifyListeners,
+            notifyListeners: notifyListeners
         };
     };
 
@@ -1580,7 +1580,7 @@
     var removeEventListener = function removeEventListener(
         node,
         event,
-        listener,
+        listener
     ) {
         return node.removeEventListener
             ? node.removeEventListener(event, listener, false)
@@ -1731,7 +1731,7 @@
                     path +
                     '" to begin with "' +
                     basename +
-                    '".',
+                    '".'
             );
 
             if (basename) path = stripBasename(path, basename);
@@ -1785,7 +1785,7 @@
                         } else {
                             revertPop(location);
                         }
-                    },
+                    }
                 );
             }
         };
@@ -1832,7 +1832,7 @@
                     state !== undefined
                 ),
                 "You should avoid providing a 2nd state argument to push when the 1st " +
-                    "argument is a location-like object that already has state; it is ignored",
+                    "argument is a location-like object that already has state; it is ignored"
             );
 
             var action = "PUSH";
@@ -1840,7 +1840,7 @@
                 path,
                 state,
                 createKey(),
-                history.location,
+                history.location
             );
 
             transitionManager.confirmTransitionTo(
@@ -1858,18 +1858,18 @@
                         globalHistory.pushState(
                             {key: key, state: state},
                             null,
-                            href,
+                            href
                         );
 
                         if (forceRefresh) {
                             window.location.href = href;
                         } else {
                             var prevIndex = allKeys.indexOf(
-                                history.location.key,
+                                history.location.key
                             );
                             var nextKeys = allKeys.slice(
                                 0,
-                                prevIndex === -1 ? 0 : prevIndex + 1,
+                                prevIndex === -1 ? 0 : prevIndex + 1
                             );
 
                             nextKeys.push(location.key);
@@ -1880,12 +1880,12 @@
                     } else {
                         warning_1(
                             state === undefined,
-                            "Browser history cannot push state in browsers that do not support HTML5 history",
+                            "Browser history cannot push state in browsers that do not support HTML5 history"
                         );
 
                         window.location.href = href;
                     }
-                },
+                }
             );
         };
 
@@ -1899,7 +1899,7 @@
                     state !== undefined
                 ),
                 "You should avoid providing a 2nd state argument to replace when the 1st " +
-                    "argument is a location-like object that already has state; it is ignored",
+                    "argument is a location-like object that already has state; it is ignored"
             );
 
             var action = "REPLACE";
@@ -1907,7 +1907,7 @@
                 path,
                 state,
                 createKey(),
-                history.location,
+                history.location
             );
 
             transitionManager.confirmTransitionTo(
@@ -1925,14 +1925,14 @@
                         globalHistory.replaceState(
                             {key: key, state: state},
                             null,
-                            href,
+                            href
                         );
 
                         if (forceRefresh) {
                             window.location.replace(href);
                         } else {
                             var prevIndex = allKeys.indexOf(
-                                history.location.key,
+                                history.location.key
                             );
 
                             if (prevIndex !== -1)
@@ -1943,12 +1943,12 @@
                     } else {
                         warning_1(
                             state === undefined,
-                            "Browser history cannot replace state in browsers that do not support HTML5 history",
+                            "Browser history cannot replace state in browsers that do not support HTML5 history"
                         );
 
                         window.location.replace(href);
                     }
-                },
+                }
             );
         };
 
@@ -1981,7 +1981,7 @@
                     removeEventListener(
                         window,
                         HashChangeEvent,
-                        handleHashChange,
+                        handleHashChange
                     );
             }
         };
@@ -2032,7 +2032,7 @@
             goBack: goBack,
             goForward: goForward,
             block: block,
-            listen: listen,
+            listen: listen
         };
 
         return history;
@@ -2063,16 +2063,16 @@
             },
             decodePath: function decodePath(path) {
                 return path.charAt(0) === "!" ? path.substr(1) : path;
-            },
+            }
         },
         noslash: {
             encodePath: stripLeadingSlash,
-            decodePath: addLeadingSlash,
+            decodePath: addLeadingSlash
         },
         slash: {
             encodePath: addLeadingSlash,
-            decodePath: addLeadingSlash,
-        },
+            decodePath: addLeadingSlash
+        }
     };
 
     var getHashPath = function getHashPath() {
@@ -2093,7 +2093,7 @@
         window.location.replace(
             window.location.href.slice(0, hashIndex >= 0 ? hashIndex : 0) +
                 "#" +
-                path,
+                path
         );
     };
 
@@ -2135,7 +2135,7 @@
                     path +
                     '" to begin with "' +
                     basename +
-                    '".',
+                    '".'
             );
 
             if (basename) path = stripBasename(path, basename);
@@ -2195,7 +2195,7 @@
                         } else {
                             revertPop(location);
                         }
-                    },
+                    }
                 );
             }
         };
@@ -2241,7 +2241,7 @@
         var push = function push(path, state) {
             warning_1(
                 state === undefined,
-                "Hash history cannot push state; it is ignored",
+                "Hash history cannot push state; it is ignored"
             );
 
             var action = "PUSH";
@@ -2249,7 +2249,7 @@
                 path,
                 undefined,
                 undefined,
-                history.location,
+                history.location
             );
 
             transitionManager.confirmTransitionTo(
@@ -2271,11 +2271,11 @@
                         pushHashPath(encodedPath);
 
                         var prevIndex = allPaths.lastIndexOf(
-                            createPath(history.location),
+                            createPath(history.location)
                         );
                         var nextPaths = allPaths.slice(
                             0,
-                            prevIndex === -1 ? 0 : prevIndex + 1,
+                            prevIndex === -1 ? 0 : prevIndex + 1
                         );
 
                         nextPaths.push(path);
@@ -2285,19 +2285,19 @@
                     } else {
                         warning_1(
                             false,
-                            "Hash history cannot PUSH the same path; a new entry will not be added to the history stack",
+                            "Hash history cannot PUSH the same path; a new entry will not be added to the history stack"
                         );
 
                         setState();
                     }
-                },
+                }
             );
         };
 
         var replace = function replace(path, state) {
             warning_1(
                 state === undefined,
-                "Hash history cannot replace state; it is ignored",
+                "Hash history cannot replace state; it is ignored"
             );
 
             var action = "REPLACE";
@@ -2305,7 +2305,7 @@
                 path,
                 undefined,
                 undefined,
-                history.location,
+                history.location
             );
 
             transitionManager.confirmTransitionTo(
@@ -2328,20 +2328,20 @@
                     }
 
                     var prevIndex = allPaths.indexOf(
-                        createPath(history.location),
+                        createPath(history.location)
                     );
 
                     if (prevIndex !== -1) allPaths[prevIndex] = path;
 
                     setState({action: action, location: location});
-                },
+                }
             );
         };
 
         var go = function go(n) {
             warning_1(
                 canGoWithoutReload,
-                "Hash history go(n) causes a full page reload in this browser",
+                "Hash history go(n) causes a full page reload in this browser"
             );
 
             globalHistory.go(n);
@@ -2366,7 +2366,7 @@
                 removeEventListener(
                     window,
                     HashChangeEvent$1,
-                    handleHashChange,
+                    handleHashChange
                 );
             }
         };
@@ -2417,7 +2417,7 @@
             goBack: goBack,
             goForward: goForward,
             block: block,
-            listen: listen,
+            listen: listen
         };
 
         return history;
@@ -2512,7 +2512,7 @@
                     state !== undefined
                 ),
                 "You should avoid providing a 2nd state argument to push when the 1st " +
-                    "argument is a location-like object that already has state; it is ignored",
+                    "argument is a location-like object that already has state; it is ignored"
             );
 
             var action = "PUSH";
@@ -2520,7 +2520,7 @@
                 path,
                 state,
                 createKey(),
-                history.location,
+                history.location
             );
 
             transitionManager.confirmTransitionTo(
@@ -2538,7 +2538,7 @@
                         nextEntries.splice(
                             nextIndex,
                             nextEntries.length - nextIndex,
-                            location,
+                            location
                         );
                     } else {
                         nextEntries.push(location);
@@ -2548,9 +2548,9 @@
                         action: action,
                         location: location,
                         index: nextIndex,
-                        entries: nextEntries,
+                        entries: nextEntries
                     });
-                },
+                }
             );
         };
 
@@ -2564,7 +2564,7 @@
                     state !== undefined
                 ),
                 "You should avoid providing a 2nd state argument to replace when the 1st " +
-                    "argument is a location-like object that already has state; it is ignored",
+                    "argument is a location-like object that already has state; it is ignored"
             );
 
             var action = "REPLACE";
@@ -2572,7 +2572,7 @@
                 path,
                 state,
                 createKey(),
-                history.location,
+                history.location
             );
 
             transitionManager.confirmTransitionTo(
@@ -2585,7 +2585,7 @@
                     history.entries[history.index] = location;
 
                     setState({action: action, location: location});
-                },
+                }
             );
         };
 
@@ -2593,7 +2593,7 @@
             var nextIndex = clamp(
                 history.index + n,
                 0,
-                history.entries.length - 1,
+                history.entries.length - 1
             );
 
             var action = "POP";
@@ -2608,14 +2608,14 @@
                         setState({
                             action: action,
                             location: location,
-                            index: nextIndex,
+                            index: nextIndex
                         });
                     } else {
                         // Mimic the behavior of DOM histories by
                         // causing a render after a cancelled POP.
                         setState();
                     }
-                },
+                }
             );
         };
 
@@ -2658,7 +2658,7 @@
             goForward: goForward,
             canGo: canGo,
             block: block,
-            listen: listen,
+            listen: listen
         };
 
         return history;
@@ -2687,7 +2687,7 @@
     function _possibleConstructorReturn(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
         return call && (typeof call === "object" || typeof call === "function")
@@ -2699,7 +2699,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -2707,8 +2707,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -2741,14 +2741,14 @@
                     this,
                     _React$Component.call.apply(
                         _React$Component,
-                        [this].concat(args),
-                    ),
+                        [this].concat(args)
+                    )
                 )),
                 _this)),
                 (_this.state = {
                     match: _this.computeMatch(
-                        _this.props.history.location.pathname,
-                    ),
+                        _this.props.history.location.pathname
+                    )
                 }),
                 _temp)),
                 _possibleConstructorReturn(_this, _ret)
@@ -2761,9 +2761,9 @@
                     history: this.props.history,
                     route: {
                         location: this.props.history.location,
-                        match: this.state.match,
-                    },
-                }),
+                        match: this.state.match
+                    }
+                })
             };
         };
 
@@ -2772,7 +2772,7 @@
                 path: "/",
                 url: "/",
                 params: {},
-                isExact: pathname === "/",
+                isExact: pathname === "/"
             };
         };
 
@@ -2785,7 +2785,7 @@
 
             invariant_1(
                 children == null || React.Children.count(children) === 1,
-                "A <Router> may have only one child element",
+                "A <Router> may have only one child element"
             );
 
             // Do this here so we can setState when a <Redirect> changes the
@@ -2793,17 +2793,17 @@
             // server rendering using a <StaticRouter>.
             this.unlisten = history.listen(function() {
                 _this2.setState({
-                    match: _this2.computeMatch(history.location.pathname),
+                    match: _this2.computeMatch(history.location.pathname)
                 });
             });
         };
 
         Router.prototype.componentWillReceiveProps = function componentWillReceiveProps(
-            nextProps,
+            nextProps
         ) {
             warning_1(
                 this.props.history === nextProps.history,
-                "You cannot change <Router history>",
+                "You cannot change <Router history>"
             );
         };
 
@@ -2822,13 +2822,13 @@
 
     Router.propTypes = {
         history: propTypes.object.isRequired,
-        children: propTypes.node,
+        children: propTypes.node
     };
     Router.contextTypes = {
-        router: propTypes.object,
+        router: propTypes.object
     };
     Router.childContextTypes = {
-        router: propTypes.object.isRequired,
+        router: propTypes.object.isRequired
     };
 
     // Written in this round about way for babel-transform-imports
@@ -2873,7 +2873,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
 
@@ -2882,8 +2882,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -2906,7 +2906,7 @@
     var possibleConstructorReturn = function(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
 
@@ -2940,8 +2940,8 @@
                     this,
                     _React$Component.call.apply(
                         _React$Component,
-                        [this].concat(args),
-                    ),
+                        [this].concat(args)
+                    )
                 )),
                 _this)),
                 (_this.history = createBrowserHistory(_this.props)),
@@ -2954,14 +2954,14 @@
             warning_1(
                 !this.props.history,
                 "<BrowserRouter> ignores the history prop. To use a custom history, " +
-                    "use `import { Router }` instead of `import { BrowserRouter as Router }`.",
+                    "use `import { Router }` instead of `import { BrowserRouter as Router }`."
             );
         };
 
         BrowserRouter.prototype.render = function render() {
             return React.createElement(Router, {
                 history: this.history,
-                children: this.props.children,
+                children: this.props.children
             });
         };
 
@@ -2973,7 +2973,7 @@
         forceRefresh: propTypes.bool,
         getUserConfirmation: propTypes.func,
         keyLength: propTypes.number,
-        children: propTypes.node,
+        children: propTypes.node
     };
 
     /**
@@ -3001,8 +3001,8 @@
                     this,
                     _React$Component.call.apply(
                         _React$Component,
-                        [this].concat(args),
-                    ),
+                        [this].concat(args)
+                    )
                 )),
                 _this)),
                 (_this.history = createHashHistory(_this.props)),
@@ -3015,14 +3015,14 @@
             warning_1(
                 !this.props.history,
                 "<HashRouter> ignores the history prop. To use a custom history, " +
-                    "use `import { Router }` instead of `import { HashRouter as Router }`.",
+                    "use `import { Router }` instead of `import { HashRouter as Router }`."
             );
         };
 
         HashRouter.prototype.render = function render() {
             return React.createElement(Router, {
                 history: this.history,
-                children: this.props.children,
+                children: this.props.children
             });
         };
 
@@ -3033,7 +3033,7 @@
         basename: propTypes.string,
         getUserConfirmation: propTypes.func,
         hashType: propTypes.oneOf(["hashbang", "noslash", "slash"]),
-        children: propTypes.node,
+        children: propTypes.node
     };
 
     var isModifiedEvent = function isModifiedEvent(event) {
@@ -3070,8 +3070,8 @@
                     this,
                     _React$Component.call.apply(
                         _React$Component,
-                        [this].concat(args),
-                    ),
+                        [this].concat(args)
+                    )
                 )),
                 _this)),
                 (_this.handleClick = function(event) {
@@ -3110,12 +3110,12 @@
                 props = objectWithoutProperties(_props, [
                     "replace",
                     "to",
-                    "innerRef",
+                    "innerRef"
                 ]); // eslint-disable-line no-unused-vars
 
             invariant_1(
                 this.context.router,
-                "You should not use <Link> outside a <Router>",
+                "You should not use <Link> outside a <Router>"
             );
 
             invariant_1(to !== undefined, 'You must specify the "to" property');
@@ -3133,8 +3133,8 @@
                 _extends$5({}, props, {
                     onClick: this.handleClick,
                     href: href,
-                    ref: innerRef,
-                }),
+                    ref: innerRef
+                })
             );
         };
 
@@ -3147,19 +3147,19 @@
         replace: propTypes.bool,
         to: propTypes.oneOfType([propTypes.string, propTypes.object])
             .isRequired,
-        innerRef: propTypes.oneOfType([propTypes.string, propTypes.func]),
+        innerRef: propTypes.oneOfType([propTypes.string, propTypes.func])
     };
     Link.defaultProps = {
-        replace: false,
+        replace: false
     };
     Link.contextTypes = {
         router: propTypes.shape({
             history: propTypes.shape({
                 push: propTypes.func.isRequired,
                 replace: propTypes.func.isRequired,
-                createHref: propTypes.func.isRequired,
-            }).isRequired,
-        }).isRequired,
+                createHref: propTypes.func.isRequired
+            }).isRequired
+        }).isRequired
     };
 
     function _classCallCheck$1(instance, Constructor) {
@@ -3171,7 +3171,7 @@
     function _possibleConstructorReturn$1(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
         return call && (typeof call === "object" || typeof call === "function")
@@ -3183,7 +3183,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -3191,8 +3191,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -3225,8 +3225,8 @@
                     this,
                     _React$Component.call.apply(
                         _React$Component,
-                        [this].concat(args),
-                    ),
+                        [this].concat(args)
+                    )
                 )),
                 _this)),
                 (_this.history = createMemoryHistory(_this.props)),
@@ -3239,14 +3239,14 @@
             warning_1(
                 !this.props.history,
                 "<MemoryRouter> ignores the history prop. To use a custom history, " +
-                    "use `import { Router }` instead of `import { MemoryRouter as Router }`.",
+                    "use `import { Router }` instead of `import { MemoryRouter as Router }`."
             );
         };
 
         MemoryRouter.prototype.render = function render() {
             return React.createElement(Router, {
                 history: this.history,
-                children: this.props.children,
+                children: this.props.children
             });
         };
 
@@ -3258,7 +3258,7 @@
         initialIndex: propTypes.number,
         getUserConfirmation: propTypes.func,
         keyLength: propTypes.number,
-        children: propTypes.node,
+        children: propTypes.node
     };
 
     // Written in this round about way for babel-transform-imports
@@ -3296,9 +3296,9 @@
             // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
             // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
             // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
-            "([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))",
+            "([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^\\\\()])+)\\))?|\\(((?:\\\\.|[^\\\\()])+)\\))([+*?])?|(\\*))"
         ].join("|"),
-        "g",
+        "g"
     );
 
     /**
@@ -3359,9 +3359,7 @@
                 asterisk: !!asterisk,
                 pattern: pattern
                     ? escapeGroup(pattern)
-                    : asterisk
-                        ? ".*"
-                        : "[^" + escapeString(delimiter) + "]+?",
+                    : asterisk ? ".*" : "[^" + escapeString(delimiter) + "]+?"
             });
         }
 
@@ -3469,7 +3467,7 @@
                         continue;
                     } else {
                         throw new TypeError(
-                            'Expected "' + token.name + '" to be defined',
+                            'Expected "' + token.name + '" to be defined'
                         );
                     }
                 }
@@ -3481,7 +3479,7 @@
                                 token.name +
                                 '" to not repeat, but received `' +
                                 JSON.stringify(value) +
-                                "`",
+                                "`"
                         );
                     }
 
@@ -3490,7 +3488,7 @@
                             continue;
                         } else {
                             throw new TypeError(
-                                'Expected "' + token.name + '" to not be empty',
+                                'Expected "' + token.name + '" to not be empty'
                             );
                         }
                     }
@@ -3506,7 +3504,7 @@
                                     token.pattern +
                                     '", but received `' +
                                     JSON.stringify(segment) +
-                                    "`",
+                                    "`"
                             );
                         }
 
@@ -3530,7 +3528,7 @@
                             token.pattern +
                             '", but received "' +
                             segment +
-                            '"',
+                            '"'
                     );
                 }
 
@@ -3604,7 +3602,7 @@
                     repeat: false,
                     partial: false,
                     asterisk: false,
-                    pattern: null,
+                    pattern: null
                 });
             }
         }
@@ -3751,14 +3749,14 @@
             return arrayToRegexp(
                 /** @type {!Array} */ path,
                 /** @type {!Array} */ keys,
-                options,
+                options
             );
         }
 
         return stringToRegexp(
             /** @type {string} */ path,
             /** @type {!Array} */ keys,
-            options,
+            options
         );
     }
     pathToRegexp_1.parse = parse_1;
@@ -3815,7 +3813,7 @@
         var _compilePath = compilePath(path, {
                 end: exact,
                 strict: strict,
-                sensitive: sensitive,
+                sensitive: sensitive
             }),
             re = _compilePath.re,
             keys = _compilePath.keys;
@@ -3838,7 +3836,7 @@
             params: keys.reduce(function(memo, key, index) {
                 memo[key.name] = values[index];
                 return memo;
-            }, {}),
+            }, {})
         };
     };
 
@@ -3865,7 +3863,7 @@
     function _possibleConstructorReturn$2(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
         return call && (typeof call === "object" || typeof call === "function")
@@ -3877,7 +3875,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -3885,8 +3883,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -3923,15 +3921,12 @@
                     this,
                     _React$Component.call.apply(
                         _React$Component,
-                        [this].concat(args),
-                    ),
+                        [this].concat(args)
+                    )
                 )),
                 _this)),
                 (_this.state = {
-                    match: _this.computeMatch(
-                        _this.props,
-                        _this.context.router,
-                    ),
+                    match: _this.computeMatch(_this.props, _this.context.router)
                 }),
                 _temp)),
                 _possibleConstructorReturn$2(_this, _ret)
@@ -3945,9 +3940,9 @@
                         location:
                             this.props.location ||
                             this.context.router.route.location,
-                        match: this.state.match,
-                    },
-                }),
+                        match: this.state.match
+                    }
+                })
             };
         };
 
@@ -3963,7 +3958,7 @@
 
             invariant_1(
                 router,
-                "You should not use <Route> or withRouter() outside a <Router>",
+                "You should not use <Route> or withRouter() outside a <Router>"
             );
 
             var route = router.route;
@@ -3976,16 +3971,16 @@
                     path: path,
                     strict: strict,
                     exact: exact,
-                    sensitive: sensitive,
+                    sensitive: sensitive
                 },
-                route.match,
+                route.match
             );
         };
 
         Route.prototype.componentWillMount = function componentWillMount() {
             warning_1(
                 !(this.props.component && this.props.render),
-                "You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored",
+                "You should not use <Route component> and <Route render> in the same route; <Route render> will be ignored"
             );
 
             warning_1(
@@ -3994,7 +3989,7 @@
                     this.props.children &&
                     !isEmptyChildren(this.props.children)
                 ),
-                "You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored",
+                "You should not use <Route component> and <Route children> in the same route; <Route children> will be ignored"
             );
 
             warning_1(
@@ -4003,26 +3998,26 @@
                     this.props.children &&
                     !isEmptyChildren(this.props.children)
                 ),
-                "You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored",
+                "You should not use <Route render> and <Route children> in the same route; <Route children> will be ignored"
             );
         };
 
         Route.prototype.componentWillReceiveProps = function componentWillReceiveProps(
             nextProps,
-            nextContext,
+            nextContext
         ) {
             warning_1(
                 !(nextProps.location && !this.props.location),
-                '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.',
+                '<Route> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.'
             );
 
             warning_1(
                 !(!nextProps.location && this.props.location),
-                '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.',
+                '<Route> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.'
             );
 
             this.setState({
-                match: this.computeMatch(nextProps, nextContext.router),
+                match: this.computeMatch(nextProps, nextContext.router)
             });
         };
 
@@ -4042,7 +4037,7 @@
                 match: match,
                 location: location,
                 history: history,
-                staticContext: staticContext,
+                staticContext: staticContext
             };
 
             if (component)
@@ -4070,17 +4065,17 @@
         component: propTypes.func,
         render: propTypes.func,
         children: propTypes.oneOfType([propTypes.func, propTypes.node]),
-        location: propTypes.object,
+        location: propTypes.object
     };
     Route.contextTypes = {
         router: propTypes.shape({
             history: propTypes.object.isRequired,
             route: propTypes.object.isRequired,
-            staticContext: propTypes.object,
-        }),
+            staticContext: propTypes.object
+        })
     };
     Route.childContextTypes = {
-        router: propTypes.object.isRequired,
+        router: propTypes.object.isRequired
     };
 
     // Written in this round about way for babel-transform-imports
@@ -4109,7 +4104,7 @@
                 "activeStyle",
                 "style",
                 "isActive",
-                "aria-current",
+                "aria-current"
             ]);
 
         var path =
@@ -4150,12 +4145,12 @@
                             style: isActive
                                 ? _extends$5({}, style, activeStyle)
                                 : style,
-                            "aria-current": (isActive && ariaCurrent) || null,
+                            "aria-current": (isActive && ariaCurrent) || null
                         },
-                        rest,
-                    ),
+                        rest
+                    )
                 );
-            },
+            }
         });
     };
 
@@ -4175,13 +4170,13 @@
             "location",
             "date",
             "time",
-            "true",
-        ]),
+            "true"
+        ])
     };
 
     NavLink.defaultProps = {
         activeClassName: "active",
-        "aria-current": "page",
+        "aria-current": "page"
     };
 
     function _classCallCheck$3(instance, Constructor) {
@@ -4193,7 +4188,7 @@
     function _possibleConstructorReturn$3(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
         return call && (typeof call === "object" || typeof call === "function")
@@ -4205,7 +4200,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -4213,8 +4208,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -4235,7 +4230,7 @@
 
             return _possibleConstructorReturn$3(
                 this,
-                _React$Component.apply(this, arguments),
+                _React$Component.apply(this, arguments)
             );
         }
 
@@ -4255,14 +4250,14 @@
         Prompt.prototype.componentWillMount = function componentWillMount() {
             invariant_1(
                 this.context.router,
-                "You should not use <Prompt> outside a <Router>",
+                "You should not use <Prompt> outside a <Router>"
             );
 
             if (this.props.when) this.enable(this.props.message);
         };
 
         Prompt.prototype.componentWillReceiveProps = function componentWillReceiveProps(
-            nextProps,
+            nextProps
         ) {
             if (nextProps.when) {
                 if (
@@ -4289,17 +4284,17 @@
     Prompt.propTypes = {
         when: propTypes.bool,
         message: propTypes.oneOfType([propTypes.func, propTypes.string])
-            .isRequired,
+            .isRequired
     };
     Prompt.defaultProps = {
-        when: true,
+        when: true
     };
     Prompt.contextTypes = {
         router: propTypes.shape({
             history: propTypes.shape({
-                block: propTypes.func.isRequired,
-            }).isRequired,
-        }).isRequired,
+                block: propTypes.func.isRequired
+            }).isRequired
+        }).isRequired
     };
 
     // Written in this round about way for babel-transform-imports
@@ -4367,7 +4362,7 @@
     function _possibleConstructorReturn$4(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
         return call && (typeof call === "object" || typeof call === "function")
@@ -4379,7 +4374,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -4387,8 +4382,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -4409,7 +4404,7 @@
 
             return _possibleConstructorReturn$4(
                 this,
-                _React$Component.apply(this, arguments),
+                _React$Component.apply(this, arguments)
             );
         }
 
@@ -4420,7 +4415,7 @@
         Redirect.prototype.componentWillMount = function componentWillMount() {
             invariant_1(
                 this.context.router,
-                "You should not use <Redirect> outside a <Router>",
+                "You should not use <Redirect> outside a <Router>"
             );
 
             if (this.isStatic()) this.perform();
@@ -4431,7 +4426,7 @@
         };
 
         Redirect.prototype.componentDidUpdate = function componentDidUpdate(
-            prevProps,
+            prevProps
         ) {
             var prevTo = createLocation(prevProps.to);
             var nextTo = createLocation(this.props.to);
@@ -4440,7 +4435,7 @@
                 warning_1(
                     false,
                     "You tried to redirect to the same route you're currently on: " +
-                        ('"' + nextTo.pathname + nextTo.search + '"'),
+                        ('"' + nextTo.pathname + nextTo.search + '"')
                 );
                 return;
             }
@@ -4459,8 +4454,8 @@
                     return _extends$7({}, to, {
                         pathname: generatePath(
                             to.pathname,
-                            computedMatch.params,
-                        ),
+                            computedMatch.params
+                        )
                     });
                 }
             }
@@ -4492,20 +4487,19 @@
         computedMatch: propTypes.object, // private, from <Switch>
         push: propTypes.bool,
         from: propTypes.string,
-        to: propTypes.oneOfType([propTypes.string, propTypes.object])
-            .isRequired,
+        to: propTypes.oneOfType([propTypes.string, propTypes.object]).isRequired
     };
     Redirect.defaultProps = {
-        push: false,
+        push: false
     };
     Redirect.contextTypes = {
         router: propTypes.shape({
             history: propTypes.shape({
                 push: propTypes.func.isRequired,
-                replace: propTypes.func.isRequired,
+                replace: propTypes.func.isRequired
             }).isRequired,
-            staticContext: propTypes.object,
-        }).isRequired,
+            staticContext: propTypes.object
+        }).isRequired
     };
 
     // Written in this round about way for babel-transform-imports
@@ -4543,7 +4537,7 @@
     function _possibleConstructorReturn$5(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
         return call && (typeof call === "object" || typeof call === "function")
@@ -4555,7 +4549,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -4563,8 +4557,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -4580,7 +4574,7 @@
         if (!basename) return location;
 
         return _extends$8({}, location, {
-            pathname: addLeadingSlash$1(basename) + location.pathname,
+            pathname: addLeadingSlash$1(basename) + location.pathname
         });
     };
 
@@ -4592,7 +4586,7 @@
         if (location.pathname.indexOf(base) !== 0) return location;
 
         return _extends$8({}, location, {
-            pathname: location.pathname.substr(base.length),
+            pathname: location.pathname.substr(base.length)
         });
     };
 
@@ -4636,13 +4630,13 @@
                     this,
                     _React$Component.call.apply(
                         _React$Component,
-                        [this].concat(args),
-                    ),
+                        [this].concat(args)
+                    )
                 )),
                 _this)),
                 (_this.createHref = function(path) {
                     return addLeadingSlash$1(
-                        _this.props.basename + createURL(path),
+                        _this.props.basename + createURL(path)
                     );
                 }),
                 (_this.handlePush = function(location) {
@@ -4653,7 +4647,7 @@
                     context.action = "PUSH";
                     context.location = addBasename(
                         basename,
-                        createLocation(location),
+                        createLocation(location)
                     );
                     context.url = createURL(context.location);
                 }),
@@ -4665,7 +4659,7 @@
                     context.action = "REPLACE";
                     context.location = addBasename(
                         basename,
-                        createLocation(location),
+                        createLocation(location)
                     );
                     context.url = createURL(context.location);
                 }),
@@ -4683,8 +4677,8 @@
         StaticRouter.prototype.getChildContext = function getChildContext() {
             return {
                 router: {
-                    staticContext: this.props.context,
-                },
+                    staticContext: this.props.context
+                }
             };
         };
 
@@ -4692,7 +4686,7 @@
             warning_1(
                 !this.props.history,
                 "<StaticRouter> ignores the history prop. To use a custom history, " +
-                    "use `import { Router }` instead of `import { StaticRouter as Router }`.",
+                    "use `import { Router }` instead of `import { StaticRouter as Router }`."
             );
         };
 
@@ -4704,7 +4698,7 @@
                 props = _objectWithoutProperties(_props, [
                     "basename",
                     "context",
-                    "location",
+                    "location"
                 ]);
 
             var history = {
@@ -4717,12 +4711,12 @@
                 goBack: staticHandler("goBack"),
                 goForward: staticHandler("goForward"),
                 listen: this.handleListen,
-                block: this.handleBlock,
+                block: this.handleBlock
             };
 
             return React.createElement(
                 Router,
-                _extends$8({}, props, {history: history}),
+                _extends$8({}, props, {history: history})
             );
         };
 
@@ -4732,14 +4726,14 @@
     StaticRouter.propTypes = {
         basename: propTypes.string,
         context: propTypes.object.isRequired,
-        location: propTypes.oneOfType([propTypes.string, propTypes.object]),
+        location: propTypes.oneOfType([propTypes.string, propTypes.object])
     };
     StaticRouter.defaultProps = {
         basename: "",
-        location: "/",
+        location: "/"
     };
     StaticRouter.childContextTypes = {
-        router: propTypes.object.isRequired,
+        router: propTypes.object.isRequired
     };
 
     // Written in this round about way for babel-transform-imports
@@ -4753,7 +4747,7 @@
     function _possibleConstructorReturn$6(self, call) {
         if (!self) {
             throw new ReferenceError(
-                "this hasn't been initialised - super() hasn't been called",
+                "this hasn't been initialised - super() hasn't been called"
             );
         }
         return call && (typeof call === "object" || typeof call === "function")
@@ -4765,7 +4759,7 @@
         if (typeof superClass !== "function" && superClass !== null) {
             throw new TypeError(
                 "Super expression must either be null or a function, not " +
-                    typeof superClass,
+                    typeof superClass
             );
         }
         subClass.prototype = Object.create(superClass && superClass.prototype, {
@@ -4773,8 +4767,8 @@
                 value: subClass,
                 enumerable: false,
                 writable: true,
-                configurable: true,
-            },
+                configurable: true
+            }
         });
         if (superClass)
             Object.setPrototypeOf
@@ -4794,28 +4788,28 @@
 
             return _possibleConstructorReturn$6(
                 this,
-                _React$Component.apply(this, arguments),
+                _React$Component.apply(this, arguments)
             );
         }
 
         Switch.prototype.componentWillMount = function componentWillMount() {
             invariant_1(
                 this.context.router,
-                "You should not use <Switch> outside a <Router>",
+                "You should not use <Switch> outside a <Router>"
             );
         };
 
         Switch.prototype.componentWillReceiveProps = function componentWillReceiveProps(
-            nextProps,
+            nextProps
         ) {
             warning_1(
                 !(nextProps.location && !this.props.location),
-                '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.',
+                '<Switch> elements should not change from uncontrolled to controlled (or vice versa). You initially used no "location" prop and then provided one on a subsequent render.'
             );
 
             warning_1(
                 !(!nextProps.location && this.props.location),
-                '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.',
+                '<Switch> elements should not change from controlled to uncontrolled (or vice versa). You provided a "location" prop initially but omitted it on a subsequent render.'
             );
         };
 
@@ -4845,9 +4839,9 @@
                             path: path,
                             exact: exact,
                             strict: strict,
-                            sensitive: sensitive,
+                            sensitive: sensitive
                         },
-                        route.match,
+                        route.match
                     );
                 }
             });
@@ -4855,7 +4849,7 @@
             return match
                 ? React.cloneElement(child, {
                       location: location,
-                      computedMatch: match,
+                      computedMatch: match
                   })
                 : null;
         };
@@ -4865,12 +4859,12 @@
 
     Switch.contextTypes = {
         router: propTypes.shape({
-            route: propTypes.object.isRequired,
-        }).isRequired,
+            route: propTypes.object.isRequired
+        }).isRequired
     };
     Switch.propTypes = {
         children: propTypes.node,
-        location: propTypes.object,
+        location: propTypes.object
     };
 
     // Written in this round about way for babel-transform-imports
@@ -4893,7 +4887,7 @@
         getDerivedStateFromProps: true,
         mixins: true,
         propTypes: true,
-        type: true,
+        type: true
     };
 
     var KNOWN_STATICS = {
@@ -4903,7 +4897,7 @@
         caller: true,
         callee: true,
         arguments: true,
-        arity: true,
+        arity: true
     };
 
     var defineProperty$1 = Object.defineProperty;
@@ -4926,7 +4920,7 @@
                     hoistNonReactStatics(
                         targetComponent,
                         inheritedComponent,
-                        blacklist,
+                        blacklist
                     );
                 }
             }
@@ -4946,7 +4940,7 @@
                 ) {
                     var descriptor = getOwnPropertyDescriptor(
                         sourceComponent,
-                        key,
+                        key
                     );
                     try {
                         // Avoid failures from read-only properties
@@ -4994,7 +4988,7 @@
         var C = function C(props) {
             var wrappedComponentRef = props.wrappedComponentRef,
                 remainingProps = _objectWithoutProperties$1(props, [
-                    "wrappedComponentRef",
+                    "wrappedComponentRef"
                 ]);
 
             return React.createElement(Route, {
@@ -5002,10 +4996,10 @@
                     return React.createElement(
                         Component,
                         _extends$9({}, remainingProps, routeComponentProps, {
-                            ref: wrappedComponentRef,
-                        }),
+                            ref: wrappedComponentRef
+                        })
                     );
-                },
+                }
             });
         };
 
@@ -5013,7 +5007,7 @@
             "withRouter(" + (Component.displayName || Component.name) + ")";
         C.WrappedComponent = Component;
         C.propTypes = {
-            wrappedComponentRef: propTypes.func,
+            wrappedComponentRef: propTypes.func
         };
 
         return hoistNonReactStatics_cjs(C, Component);
